@@ -80,6 +80,7 @@ $scheme = isset( $_SERVER['HTTPS'] ) && '1' === (string) $_SERVER['HTTPS'] ? "ht
 define( 'WP_HOME',  $scheme . $_SERVER['HTTP_HOST'] );
 define( 'WP_SITEURL', WP_HOME . '/' );
 
+define( 'WP_MAX_MEMORY_LIMIT', '128M' );
 define( 'WP_POST_REVISIONS', false );
 define( 'WPMU_PLUGIN_DIR', __DIR__ . '/wasmer/plugins' );
 define( 'WPMU_PLUGIN_URL', WP_HOME .'/wasmer/plugins' );
