@@ -1,6 +1,6 @@
 [package]
 name = "wasmer/wordpress"
-version = "0.0.101"
+version = "0.0.102"
 
 [dependencies]
 "php/php" = "=8.3.402"
@@ -23,4 +23,4 @@ module = "php/php:php"
 runner = "wasi"
 
 [command.annotations.wasi]
-main-args = ["/app/wasmer/install.php"]
+main-args = ["-d", "opcache.enable=0", "-f", "/app/wasmer/install.php"]
