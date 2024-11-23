@@ -168,9 +168,9 @@ if (!file_exists(WP_CONTENT_DIR)) {
     echo "    Creating wp-content dir\n";
     mkdir(WP_CONTENT_DIR);
 }
-if (!file_exists(get_theme_root())) {
+if (!file_exists(get_theme_root() . '/twentytwentyfour')) {
     echo "    Setting up theme\n";
-    mkdir(get_theme_root());
+    mkdir(get_theme_root(). '/twentytwentyfour', 0777, true);
     // rename(WPMU_PLUGIN_DIR . '/default-themes/twentytwentyfour', get_theme_root() . '/twentytwentyfour');
     copy_into_dir(WPMU_PLUGIN_DIR . '/default-themes/twentytwentyfour', get_theme_root() . '/twentytwentyfour');
     // recursive_copy_install(WPMU_PLUGIN_DIR . '/default-themes/twentytwentyfour', get_theme_root() . '/twentytwentyfour');
