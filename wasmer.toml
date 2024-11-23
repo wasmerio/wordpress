@@ -1,6 +1,6 @@
 [package]
 name = "wasmer/wordpress"
-version = "0.0.102"
+version = "0.0.106"
 entrypoint = "run"
 
 [dependencies]
