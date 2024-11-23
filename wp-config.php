@@ -77,7 +77,10 @@ define( 'NONCE_SALT',       'put your unique phrase here' );
 
 $scheme = isset( $_SERVER['HTTPS'] ) && '1' === (string) $_SERVER['HTTPS'] ? "https://" : "http://";
 
-define( 'WP_HOME',  isset($_SERVER['HTTP_HOST']) ? ($scheme . $_SERVER['HTTP_HOST'] ): "http://localhost");
+if (!defined('WP_HOME')) {
+	define( 'WP_HOME',  isset($_SERVER['HTTP_HOST']) ? ($scheme . $_SERVER['HTTP_HOST'] ): "http://localhost");
+}
+
 define( 'WP_SITEURL', WP_HOME . '/' );
 
 define( 'WP_MAX_MEMORY_LIMIT', '128M' );

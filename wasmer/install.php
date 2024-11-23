@@ -30,8 +30,8 @@ define("WP_INSTALL_TITLE", isset($_ENV["WP_INSTALL_TITLE"]) ? $_ENV["WP_INSTALL_
 define("WP_INSTALL_USER", isset($_ENV["WP_INSTALL_USER"]) ? $_ENV["WP_INSTALL_USER"] : "admin");
 define("WP_INSTALL_PASSWORD", isset($_ENV["WP_INSTALL_PASSWORD"]) ? $_ENV["WP_INSTALL_PASSWORD"] : "admin");
 define("WP_INSTALL_EMAIL", isset($_ENV["WP_INSTALL_EMAIL"]) ? $_ENV["WP_INSTALL_EMAIL"] : "test@wasmer.io");
-define("WP_INSTALL_PUBLIC", isset($_ENV["WP_INSTALL_PUBLIC"]) ? $_ENV["WP_INSTALL_PUBLIC"] === "1": 1);
-
+define("WP_INSTALL_PUBLIC", isset($_ENV["WP_INSTALL_PUBLIC"]) ? $_ENV["WP_INSTALL_PUBLIC"] === "1" : 1);
+define("WP_INSTALL_APP_DOMAIN", isset($_ENV["WP_INSTALL_APP_DOMAIN"]) ? $_ENV["WP_INSTALL_APP_DOMAIN"] : "https://wordpressapp.wasmer.dev");
 
 if (!IS_CLI) {
     die("This program can only be run from the CLI\n");
@@ -83,6 +83,7 @@ echo "    Connected to Database in $total miliseconds\n";
 echo " -> Checking requirements...\n";
 
 define('WP_INSTALLING', true);
+define('WP_HOME', WP_INSTALL_APP_DOMAIN);
 
 /** Load WordPress Bootstrap */
 require_once dirname(__DIR__) . '/wp-load.php';
