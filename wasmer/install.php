@@ -11,14 +11,18 @@ function copy_into_dir($source, $dest)
     ) {
         $new_path = $dest . DIRECTORY_SEPARATOR . $iterator->getSubPathname();
         if ($item->isDir()) {
-            echo "mkdir $new_path\n";
+            // echo "mkdir $new_path\n";
             mkdir($new_path);
         } else {
-            echo "copy $item -> $new_path\n";
-            if (!copy($item, $new_path)) {
-                echo "Couldn't copy";
-            }
-            echo "copied";
+            // echo "copy $item -> $new_path\n";
+            // if (!copy($item, $new_path)) {
+            //     echo "Couldn't copy";
+            // }
+
+            // COPY DOESN'T WORK, so we do it manually
+            $content = file_get_contents($item);
+            file_put_contents($new_path, $content);
+            // echo "copied";
         }
     };
 }
@@ -165,9 +169,10 @@ if (!file_exists(WP_CONTENT_DIR)) {
     mkdir(WP_CONTENT_DIR);
 }
 if (!file_exists(get_theme_root())) {
-    // mkdir(get_theme_root());
     echo "    Setting up theme\n";
-    // copy_into_dir(WPMU_PLUGIN_DIR . '/default-themes/twentytwentyfour/', get_theme_root() . '/twentytwentyfour');
+    mkdir(get_theme_root());
+    // rename(WPMU_PLUGIN_DIR . '/default-themes/twentytwentyfour', get_theme_root() . '/twentytwentyfour');
+    copy_into_dir(WPMU_PLUGIN_DIR . '/default-themes/twentytwentyfour', get_theme_root() . '/twentytwentyfour');
     // recursive_copy_install(WPMU_PLUGIN_DIR . '/default-themes/twentytwentyfour', get_theme_root() . '/twentytwentyfour');
 }
 
