@@ -32,10 +32,13 @@ if ( ! isset( $wp_did_header ) ) {
         });
     });
 
-    $url = "https://registry.wasmer.wtf/graphql";
+    $url = getenv("WASMER_GRAPHQL_URL");
+    if (!$url || empty($url)) {
+        die('Error while doing Magic Login: The Wasmer GraphQL URL is not set.');
+    }
     $authToken = $_GET["magiclogin"];
     $query = <<<'GRAPHQL'
-    query ($dbid: ID!) {
+    query ($appid: ID!) {
         viewer {
             email
         }
@@ -47,7 +50,7 @@ if ( ! isset( $wp_did_header ) ) {
     }
     GRAPHQL;
     $variables = [
-        "appid" => $_GET["appid"]
+        "appid" => getenv("WASMER_APP_ID"),
     ];
     $responseData = wasmer_graphql_query($query, $url, $variables, $authToken);
     if (!$responseData) {
@@ -63,6 +66,10 @@ if ( ! isset( $wp_did_header ) ) {
     }
     if (!$nodeData) {
         die('Error while doing Magic Login: Error occurred while fetching the application data.');
+    }
+
+    if (!isset($nodeData["id"])) {
+        die('Error while doing Magic Login: The provided id is not a valid App Id.');
     }
 
     $wasmerLoginData = [
