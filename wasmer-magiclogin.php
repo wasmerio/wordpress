@@ -192,7 +192,9 @@ function wasmer_graphql_query($registry, $query, $variables, $authToken = NULL) 
             'content' => $payload,
         ],
     ];
-
+    var_dump($registry);
+    var_dump($payload);
+    var_dump($options);
     $context = stream_context_create($options);
 
     // Send the request
