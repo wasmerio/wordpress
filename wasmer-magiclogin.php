@@ -52,7 +52,7 @@ if ( ! isset( $wp_did_header ) ) {
     $variables = [
         "appid" => getenv("WASMER_APP_ID"),
     ];
-    $responseData = wasmer_graphql_query($query, $url, $variables, $authToken);
+    $responseData = wasmer_graphql_query($url, $query, $variables, $authToken);
     if (!$responseData) {
         die('Error while doing Magic Login: Error occurred while fetching the data.');
     }
