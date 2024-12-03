@@ -192,7 +192,6 @@ function wasmer_graphql_query($registry, $query, $variables, $authToken = NULL) 
             'content' => $payload,
         ],
     ];
-
     $context = stream_context_create($options);
 
     // Send the request
@@ -200,6 +199,9 @@ function wasmer_graphql_query($registry, $query, $variables, $authToken = NULL) 
 
     // Handle errors
     if ($response === FALSE) {
+        var_dump($registry);
+        var_dump($payload);
+        var_dump($options);
         return NULL;
     }
 
