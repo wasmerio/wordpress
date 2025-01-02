@@ -1,6 +1,7 @@
 [package]
 entrypoint = "run"
 
+
 [dependencies]
 "php/php" = "=8.3.402"
 
@@ -20,3 +21,11 @@ module = "php/php:php"
 runner = "wasi"
 [command.annotations.wasi]
 main-args = ["-d", "opcache.enable=0", "-f", "/app/wasmer/install.php"]
+
+
+[[command]]
+name = "install-language"
+module = "php/php:php"
+runner = "wasi"
+[command.annotations.wasi]
+main-args = ["/app/wp-cli/php/boot-fs.php", "--allow-root"]

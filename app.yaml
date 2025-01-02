@@ -1,8 +1,10 @@
-kind: wasmer.io/App.v0
+name: something-fun-123
+owner: randomduck
 package: .
 capabilities:
   database:
     engine: mysql
 volumes:
-  - name: wp-content
-    mount: /app/wp-content
+- name: wp-content
+  mount: /app/wp-content
+kind: wasmer.io/App.v0
