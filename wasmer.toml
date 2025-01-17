@@ -10,7 +10,7 @@ entrypoint = "run"
 "/app" = "."
 
 [[command]]
-name = "run"
+name = "php"
 module = "php/php:php"
 runner = "wasi"
 [command.annotations.wasi]
