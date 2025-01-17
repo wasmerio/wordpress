@@ -95,7 +95,8 @@ if (!defined('WP_HOME')) {
 
 define( 'WP_SITEURL', WP_HOME . '/' );
 
-define( 'WP_MAX_MEMORY_LIMIT', '128M' );
+define( 'WP_MEMORY_LIMIT', '256M' );
+define( 'WP_MAX_MEMORY_LIMIT', '256M' );
 define( 'WP_POST_REVISIONS', false );
 define( 'WPMU_PLUGIN_DIR', __DIR__ . '/wasmer/plugins' );
 define( 'WPMU_PLUGIN_URL', WP_HOME .'/wasmer/plugins' );

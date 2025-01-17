@@ -1,9 +1,8 @@
 [package]
 entrypoint = "run"
 
-
 [dependencies]
-"php/php" = "=8.3.402"
+"php/php" = "=8.3.403"
 "amin/bash" = "*"
 
 [fs]
@@ -14,7 +13,24 @@ name = "run"
 module = "php/php:php"
 runner = "wasi"
 [command.annotations.wasi]
-main-args = ["-t", "/app", "-S", "localhost:8080"]
+main-args = [
+    "-t",
+    "/app",
+    "-S",
+    "localhost:8080",
+    "-d",
+    "memory_limit=256M",
+    "-d",
+    "max_execution_time=600",
+    "-d",
+    "max_input_time=600",
+    "-d",
+    "max_input_vars=4096",
+    "-d",
+    "upload_max_filesize=1024M",
+    "-d",
+    "post_max_size=1024M",
+]
 
 [[command]]
 name = "install"
