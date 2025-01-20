@@ -9,20 +9,20 @@ volumes:
   mount: /app/wp-content
 scaling:
   mode: single_concurrency
-jobs:
-- name: wp-cron
-  trigger: '*/15 * * * * *'
-  action:
-    execute:
-      package: php/php
-      command: php
-      cli_args:
-      - /app/wp-cli/php/boot-fs.php
-      - cron
-      - event
-      - run
-      - '--due-now'
-      volumes:
-      - name: wp-content
-        mount: /app/wp-content
+# jobs:
+# - name: wp-cron
+#   trigger: '*/15 * * * * *'
+#   action:
+#     execute:
+#       package: php/php
+#       command: php
+#       cli_args:
+#       - /app/wp-cli/php/boot-fs.php
+#       - cron
+#       - event
+#       - run
+#       - '--due-now'
+#       volumes:
+#       - name: wp-content
+#         mount: /app/wp-content
 kind: wasmer.io/App.v0
