@@ -43,3 +43,18 @@ main-args = ["-d", "opcache.enable=0", "-f", "/app/wasmer/install.php"]
 name = "install-language"
 module = "php/php:php"
 runner = "wasi"
+
+[[command]]
+name = "wp-cron"
+module = "php/php:php"
+runner = "wasi"
+[command.annotations.wasi]
+main-args = [
+    "/app/wp-cli.phar",
+    "cron",
+    "event",
+    "run",
+    "--due-now",
+    "--allow-root",
+    "--path=/app",
+]
