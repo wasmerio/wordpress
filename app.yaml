@@ -13,9 +13,7 @@ jobs:
 - name: wp-cron
   trigger: '*/15 * * * *'
   action:
-    execute:
-      command: wp-cron
-      volumes:
-      - name: wp-content
-        mount: /app/wp-content
+    fetch:
+      path: /wp-cron.php
+      timeout: '10m'
 kind: wasmer.io/App.v0
