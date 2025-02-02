@@ -39,8 +39,14 @@ runner = "wasi"
 [command.annotations.wasi]
 main-args = ["-d", "opcache.enable=0", "-f", "/app/wasmer/install.php"]
 
+# Kept for backwards compat with old templates
 [[command]]
 name = "install-language"
+module = "php/php:php"
+runner = "wasi"
+
+[[command]]
+name = "invoke-php"
 module = "php/php:php"
 runner = "wasi"
 
