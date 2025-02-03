@@ -1,6 +1,6 @@
 #! /usr/bin/bash
 
-set -eo
+set -e
 
 echo "Installing WP . . ."
 
