@@ -10,6 +10,11 @@ volumes:
 scaling:
   mode: single_concurrency
 jobs:
+- name: installation
+  trigger: post-deployment
+  action:
+    execute:
+      command: install-wp
 - name: wp-cron
   trigger: '*/15 * * * *'
   action:
