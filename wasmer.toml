@@ -33,25 +33,6 @@ main-args = [
 ]
 
 [[command]]
-name = "install"
-module = "php/php:php"
-runner = "wasi"
-[command.annotations.wasi]
-main-args = ["-d", "opcache.enable=0", "-f", "/app/wasmer/install.php"]
-
-# Kept for backwards compat with old templates
-[[command]]
-name = "install-language"
-module = "php/php:php"
-runner = "wasi"
-
-# Kept for backwards compat with old templates
-[[command]]
-name = "invoke-php"
-module = "php/php:php"
-runner = "wasi"
-
-[[command]]
 name = "install-wp"
 module = "amin/bash:bash"
 runner = "wasi"
