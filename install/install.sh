@@ -8,12 +8,12 @@ php /app/wp-cli.phar \
   --allow-root \
   --path=/app \
   core install \
-  --url=$WASMER_APP_URL  \
-  --title=$WP_SITE_TITLE \
-  --admin_user=$WP_ADMIN_USERNAME \
-  --admin_password=$WP_ADMIN_PASSWORD \
-  --admin_email=$WP_ADMIN_EMAIL \
-  --locale=$WP_LOCALE
+  --url="$WASMER_APP_URL"  \
+  --title="$WP_SITE_TITLE" \
+  --admin_user="$WP_ADMIN_USERNAME" \
+  --admin_password="$WP_ADMIN_PASSWORD" \
+  --admin_email="$WP_ADMIN_EMAIL" \
+  --locale="$WP_LOCALE"
 
 echo "Installing default theme . . ."
 
@@ -27,4 +27,4 @@ echo "Installing theme language . . ."
 php /app/wp-cli.phar \
   --allow-root \
   --path=/app \
-  language theme install --all $WP_LOCALE
+  language theme install --all "$WP_LOCALE"
