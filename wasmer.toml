@@ -45,10 +45,18 @@ name = "install-language"
 module = "php/php:php"
 runner = "wasi"
 
+# Kept for backwards compat with old templates
 [[command]]
 name = "invoke-php"
 module = "php/php:php"
 runner = "wasi"
+
+[[command]]
+name = "install-wp"
+module = "amin/bash:bash"
+runner = "wasi"
+[command.annotations.wasi]
+main-args = ["/app/install/install.sh"]
 
 [[command]]
 name = "wp-cron"
