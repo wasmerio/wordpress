@@ -7,7 +7,7 @@ echo "Creating WP plugins directory . . ."
 mkdir -p /app/wp-content/plugins
 touch /app/wp-content/plugins/.keep
 
-mkdir -p /app/wp-content/plugins
+mkdir -p /app/wp-content/upgrade
 touch /app/wp-content/upgrade/.keep
 
 echo "Installing WP . . ."
