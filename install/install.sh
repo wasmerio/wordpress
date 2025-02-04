@@ -2,6 +2,14 @@
 
 set -e
 
+echo "Creating WP plugins directory . . ."
+
+mkdir -p /app/wp-content/plugins
+touch /app/wp-content/plugins/.keep
+
+mkdir -p /app/wp-content/plugins
+touch /app/wp-content/upgrade/.keep
+
 echo "Installing WP . . ."
 
 php /app/wp-cli.phar \
@@ -28,9 +36,5 @@ php /app/wp-cli.phar \
   --allow-root \
   --path=/app \
   language theme install --all "$WP_LOCALE"
-
-mkdir -p /app/wp-content/plugins
-touch /app/wp-content/plugins/.keep
-touch /app/wp-content/upgrade/.keep
 
 echo "Installation complete!"
