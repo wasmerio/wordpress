@@ -28,3 +28,5 @@ php /app/wp-cli.phar \
   --allow-root \
   --path=/app \
   language theme install --all "$WP_LOCALE"
+
+mkdir -p /app/wp-content/plugins
