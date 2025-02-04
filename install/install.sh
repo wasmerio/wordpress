@@ -30,3 +30,7 @@ php /app/wp-cli.phar \
   language theme install --all "$WP_LOCALE"
 
 mkdir -p /app/wp-content/plugins
+touch /app/wp-content/plugins/.keep
+touch /app/wp-content/upgrade/.keep
+
+echo "Installation complete!"
