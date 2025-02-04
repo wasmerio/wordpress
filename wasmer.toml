@@ -1,6 +1,5 @@
 [package]
 entrypoint = "run"
-private = false
 
 [dependencies]
 "php/php" = "=8.3.403"
