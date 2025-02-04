@@ -4,6 +4,9 @@ package: '.'
 capabilities:
   database:
     engine: mysql
+locality:
+  regions:
+  - fi-helsinki
 volumes:
 - name: wp-content
   mount: /app/wp-content
