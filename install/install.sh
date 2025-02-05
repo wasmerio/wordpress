@@ -20,27 +20,14 @@ php /app/wp-cli.phar \
   --title="$WP_SITE_TITLE" \
   --admin_user="$WP_ADMIN_USERNAME" \
   --admin_password="$WP_ADMIN_PASSWORD" \
-  --admin_email="$WP_ADMIN_EMAIL"
-
-echo "Installing default theme . . ."
-
-php /app/wp-cli.phar \
-  --allow-root \
-  --path=/app \
-  theme install /app/install/twentytwentyfive.zip
-
-echo "Installing language . . ."
+  --admin_email="$WP_ADMIN_EMAIL" \
+  --locale="$WP_LOCALE"
 
 php /app/wp-cli.phar \
   --allow-root \
   --path=/app \
-  language core install --activate "$WP_LOCALE"
+  wasmer-aio-install install \
+  --locale="$WP_LOCALE" \
+  --theme=/app/install/twentytwentyfive.zip
 
-echo "Installing theme language . . ."
-
-php /app/wp-cli.phar \
-  --allow-root \
-  --path=/app \
-  language theme install --all "$WP_LOCALE"
-
-echo "Installation complete!"
+echo "Installation complete"
