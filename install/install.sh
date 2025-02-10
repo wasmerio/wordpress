@@ -7,10 +7,10 @@ export COLUMNS=80
 echo "Creating WP plugins directory . . ."
 
 mkdir -p /app/wp-content/plugins
-touch /app/wp-content/plugins/.keep
+echo "" > /app/wp-content/plugins/.keep
 
 mkdir -p /app/wp-content/upgrade
-touch /app/wp-content/upgrade/.keep
+echo "" > /app/wp-content/upgrade/.keep
 
 echo "Installing WP . . ."
 
