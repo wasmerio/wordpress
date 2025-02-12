@@ -1,0 +1,5 @@
+{
+    "require": {
+        "wp-cli/language-command": "^2.0"
+    }
+}

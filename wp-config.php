@@ -63,14 +63,28 @@ define( 'DB_COLLATE', 'utf8mb4_general_ci' );
  *
  * @since 2.6.0
  */
-define( 'AUTH_KEY',         'put your unique phrase here' );
-define( 'SECURE_AUTH_KEY',  'put your unique phrase here' );
-define( 'LOGGED_IN_KEY',    'put your unique phrase here' );
-define( 'NONCE_KEY',        'put your unique phrase here' );
-define( 'AUTH_SALT',        'put your unique phrase here' );
-define( 'SECURE_AUTH_SALT', 'put your unique phrase here' );
-define( 'LOGGED_IN_SALT',   'put your unique phrase here' );
-define( 'NONCE_SALT',       'put your unique phrase here' );
+
+function get_secret(string $name): string
+{
+	if (isset($_ENV[$name])) {
+		return $_ENV[$name];
+	}
+
+	$stderr = fopen("php://stderr", "wb");
+	fwrite($stderr, "Configuration error: secret " . $name . " not provided" . PHP_EOL);
+	fclose($stderr);
+
+	return 'no secret provided';
+}
+
+define('AUTH_KEY', get_secret('AUTH_KEY'));
+define('SECURE_AUTH_KEY', get_secret('SECURE_AUTH_KEY'));
+define('LOGGED_IN_KEY', get_secret('LOGGED_IN_KEY'));
+define('NONCE_KEY', get_secret('NONCE_KEY'));
+define('AUTH_SALT', get_secret('AUTH_SALT'));
+define('SECURE_AUTH_SALT', get_secret('SECURE_AUTH_SALT'));
+define('LOGGED_IN_SALT', get_secret('LOGGED_IN_SALT'));
+define('NONCE_SALT', get_secret('NONCE_SALT'));
 
 
 $scheme = isset( $_SERVER['HTTPS'] ) && '1' === (string) $_SERVER['HTTPS'] ? "https://" : "http://";
@@ -81,7 +95,8 @@ if (!defined('WP_HOME')) {
 
 define( 'WP_SITEURL', WP_HOME . '/' );
 
-define( 'WP_MAX_MEMORY_LIMIT', '128M' );
+define( 'WP_MEMORY_LIMIT', '256M' );
+define( 'WP_MAX_MEMORY_LIMIT', '256M' );
 define( 'WP_POST_REVISIONS', false );
 define( 'WPMU_PLUGIN_DIR', __DIR__ . '/wasmer/plugins' );
 define( 'WPMU_PLUGIN_URL', WP_HOME .'/wasmer/plugins' );
@@ -108,7 +123,7 @@ $table_prefix = 'wp_';
  *
  * @link https://wordpress.org/support/article/debugging-in-wordpress/
  */
-define( 'WP_DEBUG', true );
+define( 'WP_DEBUG', false );
 
 /* Add any custom values between this line and the "stop editing" line. */
 

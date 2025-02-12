@@ -1,8 +1,24 @@
-kind: wasmer.io/App.v0
-package: .
+name: something-fun-123
+owner: randomduck
+package: '.'
 capabilities:
   database:
     engine: mysql
 volumes:
-  - name: wp-content
-    mount: /app/wp-content
+- name: wp-content
+  mount: /app/wp-content
+scaling:
+  mode: single_concurrency
+jobs:
+- name: installation
+  trigger: post-deployment
+  action:
+    execute:
+      command: install-wp
+- name: wp-cron
+  trigger: '*/15 * * * *'
+  action:
+    fetch:
+      path: /wp-cron.php
+      timeout: '10m'
+kind: wasmer.io/App.v0
