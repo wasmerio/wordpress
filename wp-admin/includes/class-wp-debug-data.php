@@ -696,14 +696,14 @@ class WP_Debug_Data {
 
 		// Get Ghostscript information, if available.
 		if ( function_exists( 'exec' ) ) {
-			$gs = exec( 'gs --version' );
+			// $gs = exec( 'gs --version' );
 
-			if ( empty( $gs ) ) {
+			// if ( empty( $gs ) ) {
 				$gs       = $not_available;
 				$gs_debug = 'not available';
-			} else {
-				$gs_debug = $gs;
-			}
+			// } else {
+			// 	$gs_debug = $gs;
+			// }
 		} else {
 			$gs       = __( 'Unable to determine if Ghostscript is installed' );
 			$gs_debug = 'unknown';

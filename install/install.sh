@@ -2,6 +2,8 @@
 
 set -e
 
+# Needed to get the WP-CLI commands to avoid asking for the TTY size, which
+# doesn't work because we don't have the stty command it uses.
 export COLUMNS=80
 
 echo "Creating WP plugins directory . . ."
