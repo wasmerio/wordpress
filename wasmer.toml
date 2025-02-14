@@ -4,9 +4,20 @@ entrypoint = "run"
 [dependencies]
 "php/php" = "=8.3.403"
 "amin/bash" = "*"
+"wasmer/static-web-server" = "*"
 
 [fs]
 "/app" = "."
+
+[[command]]
+name = "serve-static"
+module = "wasmer/static-web-server:webserver"
+runner = "wasi"
+[command.annotations.wasi]
+main-args = [
+  "--root", "/app"
+]
+
 
 [[command]]
 name = "run"
