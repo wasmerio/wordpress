@@ -1,5 +1,4 @@
-name: something-fun-123
-owner: randomduck
+name: my-wordpress-app
 package: '.'
 capabilities:
   database:
@@ -15,6 +14,12 @@ jobs:
   action:
     execute:
       command: install-wp
+      env:
+        WP_ADMIN_EMAIL: youremail@example.com
+        WP_ADMIN_PASSWORD: CH4NGE_m3
+        WP_ADMIN_USERNAME: admin
+        WP_SITE_TITLE: Autosetup Wasmer WP!
+
 - name: wp-cron
   trigger: '*/15 * * * *'
   action:
