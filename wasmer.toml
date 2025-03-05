@@ -3,7 +3,7 @@ entrypoint = "run"
 
 [dependencies]
 "php/php-eh" = "=8.3.404-beta.4"
-"amin/bash" = "*"
+"wasmer/bash" = "*"
 "wasmer/static-web-server" = "*"
 
 [fs]
@@ -45,7 +45,7 @@ main-args = [
 
 [[command]]
 name = "install-wp"
-module = "amin/bash:bash"
+module = "wasmer/bash:bash"
 runner = "wasi"
 [command.annotations.wasi]
 main-args = ["/app/install/install.sh"]
