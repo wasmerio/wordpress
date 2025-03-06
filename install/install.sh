@@ -6,7 +6,7 @@ set -e
 # doesn't work because we don't have the stty command it uses.
 export COLUMNS=80
 
-echo "Creating WP plugins directory . . ."
+echo "Creating required directories..."
 
 mkdir -p /app/wp-content/plugins
 echo "" > /app/wp-content/plugins/.keep
@@ -14,7 +14,7 @@ echo "" > /app/wp-content/plugins/.keep
 mkdir -p /app/wp-content/upgrade
 echo "" > /app/wp-content/upgrade/.keep
 
-echo "Installing WP . . ."
+echo "Installing WordPress core..."
 
 php /app/wp-cli.phar \
   --allow-root \
@@ -27,6 +27,8 @@ php /app/wp-cli.phar \
   --admin_email="$WP_ADMIN_EMAIL" \
   --locale="$WP_LOCALE" \
   --skip-email || true
+
+echo "Installing theme..."
 
 php /app/wp-cli.phar \
   --allow-root \
