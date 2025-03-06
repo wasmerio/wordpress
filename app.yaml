@@ -1,4 +1,6 @@
 package: '.'
+env:
+  OPENSSL_CONF: /etc/ssl/openssl.cnf
 capabilities:
   database:
     engine: mysql

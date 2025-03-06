@@ -2,8 +2,8 @@
 entrypoint = "run"
 
 [dependencies]
-"php/php" = "=8.3.403"
-"amin/bash" = "*"
+"php/php-eh" = "=8.3.404-beta.4"
+"wasmer/bash" = "*"
 "wasmer/static-web-server" = "*"
 
 [fs]
@@ -21,7 +21,7 @@ main-args = [
 
 [[command]]
 name = "run"
-module = "php/php:php"
+module = "php/php-eh:php"
 runner = "wasi"
 [command.annotations.wasi]
 main-args = [
@@ -45,14 +45,14 @@ main-args = [
 
 [[command]]
 name = "install-wp"
-module = "amin/bash:bash"
+module = "wasmer/bash:bash"
 runner = "wasi"
 [command.annotations.wasi]
 main-args = ["/app/install/install.sh"]
 
 [[command]]
 name = "wp-cron"
-module = "php/php:php"
+module = "php/php-eh:php"
 runner = "wasi"
 [command.annotations.wasi]
 main-args = [
