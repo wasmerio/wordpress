@@ -26,13 +26,13 @@ php /app/wp-cli.phar \
   --admin_password="$WP_ADMIN_PASSWORD" \
   --admin_email="$WP_ADMIN_EMAIL" \
   --locale="$WP_LOCALE" \
-  --skip-email
+  --skip-email || true
 
 php /app/wp-cli.phar \
   --allow-root \
   --path=/app \
   wasmer-aio-install install \
   --locale="$WP_LOCALE" \
-  --theme=/app/install/twentytwentyfive.zip
+  --theme=/app/install/twentytwentyfive.zip || true
 
 echo "Installation complete"
