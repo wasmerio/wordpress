@@ -59,8 +59,7 @@ function wasmer_add_top_bar_menu($admin_bar) {
     $notification_html = '';
     if (WASMER_PERISHABLE_TIMESTAMP) {
         $perishable_time = intval(WASMER_PERISHABLE_TIMESTAMP);
-        // $current_time = $perishable_time-3600;
-        $current_time = gmmktime();
+        $current_time = current_time('timestamp');
         $time_left = $perishable_time - $current_time;
         if ($time_left > 0) {
             $time_left_text = '';
