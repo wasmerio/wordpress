@@ -77,6 +77,7 @@ function wasmer_action_liveconfig() {
         $pending_update = isset($transientData) ? $transientData->new_version : null;
         return [
             'slug' => isset($transientData->slug) ? $transientData->slug : $slug,
+            'icon' => isset($transientData->icons) ? $transientData->icons['1x'] : null,
             'url' => isset($transientData->url) ? $transientData->url : null,
             'name' => $plugin['Name'],
             'version' => $version,
