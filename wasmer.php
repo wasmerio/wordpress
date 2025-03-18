@@ -98,6 +98,7 @@ function wasmer_action_liveconfig() {
     }, array_keys($themes), $themes);
     $user_count = count_users();
     echo json_encode([
+        'liveconfig_version' => '1',
         'wordpress' => [
             'version' => get_bloginfo('version'),
             'latest_version' => isset($update_core->updates[0]->version) ? $update_core->updates[0]->version : null,
