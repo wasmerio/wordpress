@@ -34,14 +34,13 @@ function wasmer_icon() {
     return $svg_icon;
 }
 function wasmer_base_url() {
-    // $graphql_url = getenv('WASMER_GRAPHQL_URL');
-    $graphql_url = 'https://registry.wasmer.io/graphql';
+    $graphql_url = getenv('WASMER_GRAPHQL_URL');
     if (!$graphql_url) {
-        return 'https://wasmer.io/';
+        return 'https://wasmer.io';
     }
     $host = parse_url($graphql_url, PHP_URL_HOST);
     $host = str_replace('registry.', '', $host);
-    
+
     return "https://$host";
 }
 
