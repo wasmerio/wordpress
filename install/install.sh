@@ -25,8 +25,7 @@ php /app/wp-cli.phar \
   --admin_user="$WP_ADMIN_USERNAME" \
   --admin_password="$WP_ADMIN_PASSWORD" \
   --admin_email="$WP_ADMIN_EMAIL" \
-  --locale="$WP_LOCALE" \
-  --skip-email || true
+  --locale="$WP_LOCALE" || true
 
 echo "Installing theme..."
 
