@@ -3127,6 +3127,10 @@ class WP_Site_Health {
 
 		$url = site_url( 'wp-cron.php' );
 
+		$stdout = fopen("php://stdout", "wb");
+		fwrite($stdout, "Loopback request URL: " . $url . PHP_EOL);
+		fclose($stdout);
+
 		/*
 		 * A post request is used for the wp-cron.php loopback test to cause the file
 		 * to finish early without triggering cron jobs. This has two benefits:
