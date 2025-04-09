@@ -32,10 +32,7 @@ define( 'DB_USER', $_ENV['DB_USERNAME'] );
 define( 'DB_PASSWORD', $_ENV['DB_PASSWORD'] );
 
 /** Database hostname */
-define( 'DB_HOST', $_ENV['DB_HOST'] );
-
-/** Database port */
-define( 'DB_PORT', $_ENV['DB_PORT'] );
+define( 'DB_HOST', $_ENV['DB_HOST'] . ":" . $_ENV['DB_PORT'] );
 
 define('MYSQL_CLIENT_FLAGS', MYSQLI_CLIENT_SSL);
 
