@@ -29,7 +29,9 @@ php /app/wp-cli.phar \
 
 echo "Updating icon..."
 
-wp media import "https://wordpress.org/favicon.ico" --porcelain | wp option update site_icon
+php /app/wp-cli.phar --allow-root --path=/app \
+  media import "https://wordpress.org/favicon.ico" --porcelain | \
+  php /app/wp-cli.phar --allow-root --path=/app option update site_icon
 
 echo "Installing theme..."
 
