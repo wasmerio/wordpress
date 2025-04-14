@@ -27,6 +27,10 @@ php /app/wp-cli.phar \
   --admin_email="$WP_ADMIN_EMAIL" \
   --locale="$WP_LOCALE" || true
 
+echo "Updating icon..."
+
+wp media import "https://wordpress.org/favicon.ico" --porcelain | wp option update site_icon
+
 echo "Installing theme..."
 
 php /app/wp-cli.phar \
