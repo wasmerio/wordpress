@@ -2,7 +2,7 @@
 entrypoint = "run"
 
 [dependencies]
-"php/php-eh" = "=8.3.404-beta.6"
+"php/php-eh" = "=8.3.404-beta.8"
 "wasmer/bash" = "*"
 "wasmer/static-web-server" = "*"
 
