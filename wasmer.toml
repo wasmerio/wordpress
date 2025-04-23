@@ -5,6 +5,7 @@ entrypoint = "run"
 "php/php-eh" = "=8.3.404-beta.8"
 "wasmer/bash" = "*"
 "wasmer/static-web-server" = "*"
+"curl/curl" = "*"
 
 [fs]
 "/app" = "."
