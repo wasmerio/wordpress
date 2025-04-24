@@ -31,7 +31,7 @@ echo "Updating icon..."
 
 php /app/wp-cli.phar --allow-root --path=/app \
   media import "https://i0.wp.com/learn.wordpress.org/files/2023/08/WordPress-logotype-simplified.png" --porcelain | \
-  php /app/wp-cli.phar --allow-root --path=/app option update site_icon
+  php /app/wp-cli.phar --allow-root --path=/app option update site_icon || true
 
 echo "Installing theme..."
 
