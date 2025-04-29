@@ -25,7 +25,7 @@ php /app/wp-cli.phar \
   --admin_user="$WP_ADMIN_USERNAME" \
   --admin_password="$WP_ADMIN_PASSWORD" \
   --admin_email="$WP_ADMIN_EMAIL" \
-  --locale="$WP_LOCALE" || true
+  --locale="$WP_LOCALE" || true 
 
 echo "Updating icon..."
 
