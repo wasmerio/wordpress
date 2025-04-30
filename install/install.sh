@@ -17,7 +17,6 @@ echo "" > /app/wp-content/upgrade/.keep
 echo "Installing WordPress core..."
 
 php /app/wp-cli.phar \
-  --debug \
   --allow-root \
   --path=/app \
   core install \
