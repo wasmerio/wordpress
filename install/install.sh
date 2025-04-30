@@ -6,8 +6,8 @@ set -e
 # doesn't work because we don't have the stty command it uses.
 export COLUMNS=80
 
-echo "Sleeping for 30 seconds"
-sleep 30
+echo "Running php just once"
+php -v
 
 echo "Creating required directories..."
 
