@@ -1,45 +1,46 @@
-package: '.'
+package: "."
 env:
   OPENSSL_CONF: /etc/ssl/openssl.cnf
 capabilities:
   database:
     engine: mysql
 volumes:
-- name: wp-content
-  mount: /app/wp-content
+  - name: wp-content
+    mount: /app/wp-content
 scaling:
   mode: single_concurrency
 jobs:
-- name: installation
-  trigger: post-deployment
-  action:
-    execute:
-      command: install-wp
-# Invoke cron with fetch.
-# Currently disabled because it causes redundant instances to stay alive for
-# minutes.
-# - name: wp-cron
-#   trigger: '*/15 * * * *'
-#   action:
-#     fetch:
-#       path: /wp-cron.php
-#       timeout: '10m'
-# Invoke cron with a separate instance.
-- name: wp-cron
-  trigger: '*/15 * * * *'
-  timeout: "15m"
-  action:
-    execute:
-      package: "php/php-eh@=8.3.404-beta.4"
-      command: php
-      cli_args:
-      - /app/wp-cli/php/boot-fs.php
-      - cron
-      - event
-      - run
-      - '--due-now'
-      volumes:
-      - name: wp-content
-        mount: /app/wp-content
+  - name: installation
+    timeout: "15m"
+    trigger: post-deployment
+    action:
+      execute:
+        command: install-wp
+  # Invoke cron with fetch.
+  # Currently disabled because it causes redundant instances to stay alive for
+  # minutes.
+  # - name: wp-cron
+  #   trigger: '*/15 * * * *'
+  #   action:
+  #     fetch:
+  #       path: /wp-cron.php
+  #       timeout: '10m'
+  # Invoke cron with a separate instance.
+  - name: wp-cron
+    trigger: "*/15 * * * *"
+    timeout: "15m"
+    action:
+      execute:
+        package: "php/php-eh@=8.3.404-beta.4"
+        command: php
+        cli_args:
+          - /app/wp-cli/php/boot-fs.php
+          - cron
+          - event
+          - run
+          - "--due-now"
+        volumes:
+          - name: wp-content
+            mount: /app/wp-content
 kind: wasmer.io/App.v0
 enable_email: true
