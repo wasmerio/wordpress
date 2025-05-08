@@ -124,6 +124,7 @@ function wasmer_action_liveconfig() {
         ],
         'php' => [
             'version' => phpversion(),
+            'architecture' => PHP_INT_SIZE == 4 ? '32' : '64',
             'memory_limit' => ini_get('memory_limit'),
             'max_execution_time' => ini_get('max_execution_time'),
             'max_input_time' => ini_get('max_input_time'),
