@@ -81,8 +81,18 @@ define('SECURE_AUTH_SALT', get_secret('SECURE_AUTH_SALT'));
 define('LOGGED_IN_SALT', get_secret('LOGGED_IN_SALT'));
 define('NONCE_SALT', get_secret('NONCE_SALT'));
 
+// On old php version HTTPS might be missing - fallback to HTTP_X_FORWARDED_PROTO 
+if ( empty( $_SERVER['HTTPS'] )
+	&& ! empty( $_SERVER['HTTP_X_FORWARDED_PROTO'] )
+	&& 'https' === strtolower( $_SERVER['HTTP_X_FORWARDED_PROTO'] )
+) {
+	// We need to actually set it so WP would know it's behind TLS
+	$_SERVER['HTTPS'] = 'on';
+}
 
-$scheme = isset( $_SERVER['HTTPS'] ) && '1' === (string) $_SERVER['HTTPS'] ? "https://" : "http://";
+$scheme = ( ! empty( $_SERVER['HTTPS'] ) && 'off' !== strtolower( $_SERVER['HTTPS'] ) )
+	? "https://"
+	: "http://";
 
 if (!defined('WP_HOME')) {
 	define( 'WP_HOME',  isset($_SERVER['HTTP_HOST']) ? ($scheme . $_SERVER['HTTP_HOST'] ): "http://localhost");
